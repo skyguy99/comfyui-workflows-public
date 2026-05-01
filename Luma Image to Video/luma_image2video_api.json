@@ -1,0 +1,31 @@
+{
+  "27": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "auto",
+      "codec": "auto",
+      "video": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  },
+  "36": {
+    "inputs": {
+      "prompt": "",
+      "model": "ray-2",
+      "resolution": "540p",
+      "duration": "5s",
+      "loop": false,
+      "seed": 0
+    },
+    "class_type": "LumaImageToVideoNode",
+    "_meta": {
+      "title": "Luma Image to Video"
+    }
+  }
+}

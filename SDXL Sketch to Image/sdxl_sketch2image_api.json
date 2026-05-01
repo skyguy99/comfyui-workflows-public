@@ -1,0 +1,260 @@
+{
+  "6": {
+    "inputs": {
+      "strength": [
+        "24",
+        0
+      ],
+      "start_percent": 0,
+      "end_percent": 0.8,
+      "positive": [
+        "17",
+        0
+      ],
+      "negative": [
+        "18",
+        0
+      ],
+      "control_net": [
+        "14",
+        0
+      ],
+      "image": [
+        "11",
+        0
+      ],
+      "vae": [
+        "15",
+        2
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "9": {
+    "inputs": {
+      "samples": [
+        "19",
+        0
+      ],
+      "vae": [
+        "15",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "11": {
+    "inputs": {
+      "preprocessor": "ScribblePreprocessor",
+      "resolution": 1024,
+      "image": [
+        "37",
+        0
+      ]
+    },
+    "class_type": "AIO_Preprocessor",
+    "_meta": {
+      "title": "AIO Aux Preprocessor"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": [
+        "37",
+        1
+      ],
+      "height": [
+        "37",
+        2
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "14": {
+    "inputs": {
+      "control_net_name": "sai_xl_canny_256lora.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "15": {
+    "inputs": {
+      "ckpt_name": "juggernautXL_v9Rdphoto2Lightning.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "17": {
+    "inputs": {
+      "text": [
+        "21",
+        0
+      ],
+      "clip": [
+        "15",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "18": {
+    "inputs": {
+      "text": "ugly, nude, nsfw, watermark, blurry",
+      "clip": [
+        "15",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "19": {
+    "inputs": {
+      "seed": [
+        "20",
+        0
+      ],
+      "steps": 7,
+      "cfg": 2.1,
+      "sampler_name": "dpmpp_sde_gpu",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "15",
+        0
+      ],
+      "positive": [
+        "6",
+        0
+      ],
+      "negative": [
+        "6",
+        1
+      ],
+      "latent_image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "20": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 1202435138846,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "21": {
+    "inputs": {
+      "id": "prompt",
+      "label": "Prompt",
+      "default_value": "a blue dress",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "23": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "9",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "24": {
+    "inputs": {
+      "id": "structure",
+      "label": "Structure",
+      "min": 0,
+      "max": 1,
+      "default_value": 0.8000000000000002
+    },
+    "class_type": "Playbook Float",
+    "_meta": {
+      "title": "Playbook Float (External)"
+    }
+  },
+  "36": {
+    "inputs": {
+      "size": 1024,
+      "method": "NEAREST",
+      "image": [
+        "40",
+        0
+      ]
+    },
+    "class_type": "ResizeLongestToNode",
+    "_meta": {
+      "title": "Resize Longest To"
+    }
+  },
+  "37": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": false,
+      "divisible_by": 1,
+      "crop": "disabled",
+      "image": [
+        "36",
+        0
+      ],
+      "get_image_size": [
+        "36",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "40": {
+    "inputs": {
+      "id": "Node ID",
+      "label": "Node Label",
+      "default_url": ".png"
+    },
+    "class_type": "Playbook Image",
+    "_meta": {
+      "title": "Playbook Image (External)"
+    }
+  }
+}

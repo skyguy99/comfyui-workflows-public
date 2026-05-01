@@ -1,0 +1,310 @@
+{
+  "157": {
+    "inputs": {
+      "text": [
+        "366",
+        0
+      ],
+      "clip": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "159": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "160": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "161": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "162": {
+    "inputs": {
+      "sampler_name": "deis"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "163": {
+    "inputs": {
+      "scheduler": "beta",
+      "steps": 25,
+      "denoise": 1,
+      "model": [
+        "169",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "164": {
+    "inputs": {
+      "model": [
+        "169",
+        0
+      ],
+      "conditioning": [
+        "166",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "165": {
+    "inputs": {
+      "noise_seed": [
+        "370",
+        0
+      ]
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "166": {
+    "inputs": {
+      "guidance": 4.2,
+      "conditioning": [
+        "380",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "167": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "batch_size": 1
+    },
+    "class_type": "EmptySD3LatentImage",
+    "_meta": {
+      "title": "EmptySD3LatentImage"
+    }
+  },
+  "169": {
+    "inputs": {
+      "max_shift": 1.15,
+      "base_shift": 0.5,
+      "width": 1024,
+      "height": 1024,
+      "model": [
+        "161",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingFlux",
+    "_meta": {
+      "title": "ModelSamplingFlux"
+    }
+  },
+  "175": {
+    "inputs": {
+      "text": "blurry, (nsfw), (nude)",
+      "clip": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "177": {
+    "inputs": {
+      "samples": [
+        "178",
+        1
+      ],
+      "vae": [
+        "159",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "178": {
+    "inputs": {
+      "noise": [
+        "165",
+        0
+      ],
+      "guider": [
+        "164",
+        0
+      ],
+      "sampler": [
+        "162",
+        0
+      ],
+      "sigmas": [
+        "163",
+        0
+      ],
+      "latent_image": [
+        "167",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "179": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "177",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "348": {
+    "inputs": {
+      "control_net_name": "UnionFlux.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "365": {
+    "inputs": {
+      "id": "prompt",
+      "label": "Prompt",
+      "default_value": "a boy with blue hair",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "366": {
+    "inputs": {
+      "separator": ",",
+      "text1": [
+        "367",
+        0
+      ],
+      "text2": [
+        "365",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "367": {
+    "inputs": {
+      "String": "a character sheet, white background, multiple views, from multiple angles, visible face, portrait,"
+    },
+    "class_type": "String",
+    "_meta": {
+      "title": "String"
+    }
+  },
+  "370": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 32523953295803,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "378": {
+    "inputs": {
+      "url_or_path": "https://playbook-public-assets.s3.us-east-1.amazonaws.com/OpenPoseSheet.png"
+    },
+    "class_type": "LoadImageFromUrlOrPath",
+    "_meta": {
+      "title": "LoadImageFromUrlOrPath"
+    }
+  },
+  "380": {
+    "inputs": {
+      "strength": 0.6600000000000001,
+      "start_percent": 0,
+      "end_percent": 0.4000000000000001,
+      "positive": [
+        "157",
+        0
+      ],
+      "negative": [
+        "175",
+        0
+      ],
+      "control_net": [
+        "348",
+        0
+      ],
+      "image": [
+        "378",
+        0
+      ],
+      "vae_optional": [
+        "159",
+        0
+      ]
+    },
+    "class_type": "ACN_AdvancedControlNetApply_v2",
+    "_meta": {
+      "title": "Apply Advanced ControlNet 🛂🅐🅒🅝"
+    }
+  }
+}

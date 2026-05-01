@@ -1,0 +1,239 @@
+{
+  "1026": {
+    "inputs": {
+      "clip_l": [
+        "1044",
+        0
+      ],
+      "t5xxl": [
+        "1044",
+        0
+      ],
+      "guidance": 4,
+      "clip": [
+        "1029",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "CLIPTextEncodeFlux"
+    }
+  },
+  "1027": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "1028": {
+    "inputs": {
+      "clip_l": "",
+      "t5xxl": "((nude)), ((nsfw)), watermark, label, bad photo",
+      "guidance": 4,
+      "clip": [
+        "1029",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncodeFlux",
+    "_meta": {
+      "title": "NEGATIVE_PROMPT"
+    }
+  },
+  "1029": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "t5xxl_fp16.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "1032": {
+    "inputs": {
+      "noise_seed": [
+        "1048",
+        0
+      ],
+      "steps": 25,
+      "timestep_to_start_cfg": 1,
+      "true_gs": 3.5,
+      "image_to_image_strength": 0,
+      "denoise_strength": 1,
+      "model": [
+        "1035",
+        0
+      ],
+      "conditioning": [
+        "1026",
+        0
+      ],
+      "neg_conditioning": [
+        "1028",
+        0
+      ],
+      "latent_image": [
+        "1055",
+        0
+      ],
+      "controlnet_condition": [
+        "1037",
+        0
+      ]
+    },
+    "class_type": "XlabsSampler",
+    "_meta": {
+      "title": "Xlabs Sampler"
+    }
+  },
+  "1033": {
+    "inputs": {
+      "samples": [
+        "1032",
+        0
+      ],
+      "vae": [
+        "1027",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "1035": {
+    "inputs": {
+      "unet_name": "flux1-dev.safetensors",
+      "weight_dtype": "fp8_e4m3fn"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "1036": {
+    "inputs": {
+      "width": [
+        "1049",
+        0
+      ],
+      "height": [
+        "1049",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "1037": {
+    "inputs": {
+      "strength": 0.71,
+      "controlnet": [
+        "1042",
+        0
+      ],
+      "image": [
+        "1060",
+        0
+      ]
+    },
+    "class_type": "ApplyFluxControlNet",
+    "_meta": {
+      "title": "Apply Flux ControlNet"
+    }
+  },
+  "1042": {
+    "inputs": {
+      "model_name": "flux-dev",
+      "controlnet_path": "flux-depth-controlnet-v3.safetensors"
+    },
+    "class_type": "LoadFluxControlNet",
+    "_meta": {
+      "title": "Load Flux ControlNet"
+    }
+  },
+  "1043": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "1033",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "1044": {
+    "inputs": {
+      "id": "Node ID",
+      "label": "Scene Prompt",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "1048": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 5345435,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "1049": {
+    "inputs": {
+      "image": [
+        "1060",
+        0
+      ]
+    },
+    "class_type": "Get Image Size",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "1055": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.33,
+      "samples": [
+        "1036",
+        0
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "Upscale Latent By"
+    }
+  },
+  "1060": {
+    "inputs": {
+      "api_key": "",
+      "run_id": ""
+    },
+    "class_type": "Playbook Depth",
+    "_meta": {
+      "title": "Playbook Depth Render Pass"
+    }
+  }
+}

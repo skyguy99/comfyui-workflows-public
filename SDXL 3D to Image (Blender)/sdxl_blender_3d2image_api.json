@@ -1,0 +1,738 @@
+{
+  "1": {
+    "inputs": {
+      "control_net_name": "sai_xl_depth_256lora.safetensors"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "2": {
+    "inputs": {
+      "samples": [
+        "91",
+        0
+      ],
+      "vae": [
+        "13",
+        2
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "4": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": [
+        "11",
+        0
+      ],
+      "height": [
+        "11",
+        1
+      ],
+      "crop": "disabled",
+      "image": [
+        "112",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "65",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 1 Prompt"
+    }
+  },
+  "7": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": [
+        "11",
+        0
+      ],
+      "height": [
+        "11",
+        1
+      ],
+      "crop": "disabled",
+      "image": [
+        "111",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "8": {
+    "inputs": {
+      "control_net_name": "sai_xl_canny_256lora.safetensors"
+    },
+    "class_type": "ControlNetLoaderAdvanced",
+    "_meta": {
+      "title": "Load Advanced ControlNet Model 🛂🅐🅒🅝"
+    }
+  },
+  "11": {
+    "inputs": {
+      "image": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "Get Image Size",
+    "_meta": {
+      "title": "Get Image Size"
+    }
+  },
+  "12": {
+    "inputs": {
+      "width": [
+        "11",
+        0
+      ],
+      "height": [
+        "11",
+        1
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "13": {
+    "inputs": {
+      "ckpt_name": "juggernautXL_v9Rdphoto2Lightning.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "15": {
+    "inputs": {
+      "filename_prefix": "Playbook_",
+      "images": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "17": {
+    "inputs": {
+      "strength": 0.19,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "18",
+        0
+      ],
+      "negative": [
+        "18",
+        1
+      ],
+      "control_net": [
+        "8",
+        0
+      ],
+      "image": [
+        "4",
+        0
+      ]
+    },
+    "class_type": "ACN_AdvancedControlNetApply",
+    "_meta": {
+      "title": "Apply Advanced ControlNet 🛂🅐🅒🅝"
+    }
+  },
+  "18": {
+    "inputs": {
+      "strength": 0.88,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "37",
+        0
+      ],
+      "negative": [
+        "19",
+        0
+      ],
+      "control_net": [
+        "1",
+        0
+      ],
+      "image": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "ACN_AdvancedControlNetApply",
+    "_meta": {
+      "title": "Apply Advanced ControlNet 🛂🅐🅒🅝"
+    }
+  },
+  "19": {
+    "inputs": {
+      "text": "text, watermark, uniform, patterns, underexposed, ugly, high contrast, jpeg, (worst quality, low quality, lowres, low details, overexposed, underexposed, grayscale, bw,  bad art:1.4), (font, username, error, logo, words, letters, digits, autograph, trademark, name:1.2), (blur, blurry, grainy), poorly lit, bad shadow, draft, cropped, out of frame, cut off, censored, jpeg artifacts, out of focus, glitch, duplicate, (amateur:1.3), JuggernautNegative, low quality, blurry, malformed, distorted, black and white, hand, text, water mark",
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "32": {
+    "inputs": {
+      "id": "scene_prompt",
+      "label": "Scene Prompt",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Scene Prompt"
+    }
+  },
+  "37": {
+    "inputs": {
+      "mask_1_strength": 1,
+      "mask_2_strength": 1,
+      "mask_3_strength": 1,
+      "mask_4_strength": 1,
+      "set_cond_area": "default",
+      "positive_1": [
+        "6",
+        0
+      ],
+      "negative_1": [
+        "19",
+        0
+      ],
+      "positive_2": [
+        "67",
+        0
+      ],
+      "negative_2": [
+        "19",
+        0
+      ],
+      "positive_3": [
+        "74",
+        0
+      ],
+      "negative_3": [
+        "19",
+        0
+      ],
+      "positive_4": [
+        "78",
+        0
+      ],
+      "negative_4": [
+        "19",
+        0
+      ],
+      "mask_1": [
+        "41",
+        0
+      ],
+      "mask_2": [
+        "45",
+        0
+      ],
+      "mask_3": [
+        "42",
+        0
+      ],
+      "mask_4": [
+        "43",
+        0
+      ]
+    },
+    "class_type": "ConditioningSetMaskAndCombine4",
+    "_meta": {
+      "title": "ConditioningSetMaskAndCombine4"
+    }
+  },
+  "41": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "56",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "42": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "47",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "43": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "44",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "44": {
+    "inputs": {
+      "mask_color": "#000000",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "13",
+        1
+      ],
+      "color_mask": [
+        "59",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "45": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "54",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "47": {
+    "inputs": {
+      "mask_color": "#a2d4d5",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "13",
+        1
+      ],
+      "color_mask": [
+        "59",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "54": {
+    "inputs": {
+      "mask_color": "#0489d6",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "13",
+        1
+      ],
+      "color_mask": [
+        "59",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "56": {
+    "inputs": {
+      "mask_color": "#ffe905",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "13",
+        1
+      ],
+      "color_mask": [
+        "59",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "59": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "width": [
+        "11",
+        0
+      ],
+      "height": [
+        "11",
+        1
+      ],
+      "crop": "disabled",
+      "image": [
+        "93",
+        0
+      ]
+    },
+    "class_type": "ImageScale",
+    "_meta": {
+      "title": "Upscale Image"
+    }
+  },
+  "65": {
+    "inputs": {
+      "separator": "",
+      "text1": [
+        "32",
+        0
+      ],
+      "text2": [
+        "105",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "67": {
+    "inputs": {
+      "text": [
+        "68",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 2 Prompt"
+    }
+  },
+  "68": {
+    "inputs": {
+      "separator": "",
+      "text1": [
+        "32",
+        0
+      ],
+      "text2": [
+        "106",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "71": {
+    "inputs": {
+      "separator": "",
+      "text1": [
+        "32",
+        0
+      ],
+      "text2": [
+        "107",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "74": {
+    "inputs": {
+      "text": [
+        "71",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 3 Prompt"
+    }
+  },
+  "75": {
+    "inputs": {
+      "separator": "",
+      "text1": [
+        "32",
+        0
+      ],
+      "text2": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "78": {
+    "inputs": {
+      "text": [
+        "75",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 4 Prompt"
+    }
+  },
+  "91": {
+    "inputs": {
+      "seed": [
+        "100",
+        0
+      ],
+      "steps": 7,
+      "cfg": 2.1,
+      "sampler_name": "dpmpp_sde_gpu",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "13",
+        0
+      ],
+      "positive": [
+        "17",
+        0
+      ],
+      "negative": [
+        "17",
+        1
+      ],
+      "latent_image": [
+        "99",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "93": {
+    "inputs": {
+      "api_key": "",
+      "blur_size": 0,
+      "run_id": ""
+    },
+    "class_type": "Playbook Mask",
+    "_meta": {
+      "title": "Playbook Mask Render Pass"
+    }
+  },
+  "94": {
+    "inputs": {
+      "text": [
+        "32",
+        0
+      ],
+      "clip": [
+        "13",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 1 Prompt"
+    }
+  },
+  "99": {
+    "inputs": {
+      "upscale_method": "nearest-exact",
+      "scale_by": 1.33,
+      "samples": [
+        "12",
+        0
+      ]
+    },
+    "class_type": "LatentUpscaleBy",
+    "_meta": {
+      "title": "Upscale Latent By"
+    }
+  },
+  "100": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 434324235325,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "105": {
+    "inputs": {
+      "id": "mask_1",
+      "label": "Mask 1",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "106": {
+    "inputs": {
+      "id": "mask_2",
+      "label": "Mask 2",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "107": {
+    "inputs": {
+      "id": "mask_3",
+      "label": "Mask 3",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "108": {
+    "inputs": {
+      "id": "mask_4",
+      "label": "Mask 4",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "111": {
+    "inputs": {
+      "ckpt_name": "depth_anything_v2_vitl.pth",
+      "resolution": 1024,
+      "image": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "DepthAnythingV2Preprocessor",
+    "_meta": {
+      "title": "Depth Anything V2 - Relative"
+    }
+  },
+  "112": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor",
+    "_meta": {
+      "title": "Canny Edge"
+    }
+  },
+  "113": {
+    "inputs": {
+      "api_key": "",
+      "run_id": ""
+    },
+    "class_type": "Playbook Beauty",
+    "_meta": {
+      "title": "Playbook Beauty Render Pass"
+    }
+  }
+}

@@ -1,0 +1,449 @@
+{
+  "1": {
+    "inputs": {
+      "control_net_name": "diffusers_xl_canny_full.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "2": {
+    "inputs": {
+      "low_threshold": 100,
+      "high_threshold": 200,
+      "resolution": 512,
+      "image": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "CannyEdgePreprocessor",
+    "_meta": {
+      "title": "Canny Edge"
+    }
+  },
+  "3": {
+    "inputs": {
+      "lora_name": "sdxl_lightning_4step_lora.safetensors",
+      "strength_model": 1,
+      "strength_clip": 1,
+      "model": [
+        "40",
+        0
+      ],
+      "clip": [
+        "40",
+        1
+      ]
+    },
+    "class_type": "LoraLoader",
+    "_meta": {
+      "title": "Load LoRA"
+    }
+  },
+  "4": {
+    "inputs": {
+      "control_net_name": "diffusers_xl_depth_full.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "5": {
+    "inputs": {
+      "strength": 0.75,
+      "start_percent": 0,
+      "end_percent": 0.7000000000000001,
+      "positive": [
+        "30",
+        0
+      ],
+      "negative": [
+        "84",
+        0
+      ],
+      "control_net": [
+        "4",
+        0
+      ],
+      "image": [
+        "14",
+        0
+      ]
+    },
+    "class_type": "ACN_AdvancedControlNetApply",
+    "_meta": {
+      "title": "Apply Advanced ControlNet 🛂🅐🅒🅝"
+    }
+  },
+  "6": {
+    "inputs": {
+      "samples": [
+        "15",
+        0
+      ],
+      "vae": [
+        "79",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "7": {
+    "inputs": {
+      "strength": 0.2,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "5",
+        0
+      ],
+      "negative": [
+        "5",
+        1
+      ],
+      "control_net": [
+        "1",
+        0
+      ],
+      "image": [
+        "39",
+        0
+      ]
+    },
+    "class_type": "ACN_AdvancedControlNetApply",
+    "_meta": {
+      "title": "Apply Advanced ControlNet 🛂🅐🅒🅝"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": [
+        "59",
+        1
+      ],
+      "height": [
+        "59",
+        2
+      ],
+      "batch_size": [
+        "61",
+        1
+      ]
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "14": {
+    "inputs": {
+      "width": [
+        "59",
+        1
+      ],
+      "height": [
+        "59",
+        2
+      ],
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 1,
+      "crop": "disabled",
+      "image": [
+        "68",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "15": {
+    "inputs": {
+      "seed": [
+        "86",
+        0
+      ],
+      "steps": 4,
+      "cfg": 2,
+      "sampler_name": "dpmpp_sde",
+      "scheduler": "karras",
+      "denoise": 1,
+      "model": [
+        "87",
+        0
+      ],
+      "positive": [
+        "7",
+        0
+      ],
+      "negative": [
+        "7",
+        1
+      ],
+      "latent_image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "30": {
+    "inputs": {
+      "text": [
+        "52",
+        0
+      ],
+      "clip": [
+        "40",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Scene Prompt"
+    }
+  },
+  "39": {
+    "inputs": {
+      "width": [
+        "59",
+        1
+      ],
+      "height": [
+        "59",
+        2
+      ],
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 1,
+      "crop": "disabled",
+      "image": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "40": {
+    "inputs": {
+      "ckpt_name": "dynavisionXLAllInOneStylized_releaseV0610Bakedvae.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "52": {
+    "inputs": {
+      "id": "scene_prompt",
+      "label": "Scene Prompt",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Scene Prompt"
+    }
+  },
+  "59": {
+    "inputs": {
+      "image": [
+        "81",
+        0
+      ]
+    },
+    "class_type": "GetImageSizeAndCount",
+    "_meta": {
+      "title": "Get Image Size & Count"
+    }
+  },
+  "61": {
+    "inputs": {
+      "select_every_nth": 2,
+      "skip_first_images": 0,
+      "images": [
+        "85",
+        0
+      ]
+    },
+    "class_type": "VHS_SelectEveryNthImage",
+    "_meta": {
+      "title": "Select Every Nth Image 🎥🅥🅗🅢"
+    }
+  },
+  "68": {
+    "inputs": {
+      "resolution": 512,
+      "image": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "Zoe-DepthMapPreprocessor",
+    "_meta": {
+      "title": "Zoe Depth Map"
+    }
+  },
+  "76": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "AnimateDiff",
+      "pingpong": false,
+      "save_output": true,
+      "images": [
+        "89",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "79": {
+    "inputs": {
+      "vae_name": "sdxl.vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "81": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 1,
+      "crop": "disabled",
+      "image": [
+        "61",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image"
+    }
+  },
+  "83": {
+    "inputs": {
+      "id": "batch_size",
+      "label": "Batch Size",
+      "min": 0,
+      "max": 100,
+      "default_value": 49
+    },
+    "class_type": "Playbook Number",
+    "_meta": {
+      "title": "Playbook Number (External)"
+    }
+  },
+  "84": {
+    "inputs": {
+      "text": "text, watermark, uniform, patterns, underexposed, ugly, high contrast, jpeg, (worst quality, low quality, lowres, low details, overexposed, underexposed, grayscale, bw,  bad art:1.4), (font, username, error, logo, words, letters, digits, autograph, trademark, name:1.2), (blur, blurry, grainy), poorly lit, bad shadow, draft, cropped, out of frame, cut off, censored, jpeg artifacts, out of focus, glitch, duplicate, (amateur:1.3), JuggernautNegative, low quality, blurry, malformed, distorted, black and white, hand, text, water mark, nude, nsfw",
+      "clip": [
+        "40",
+        1
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Negative Prompt"
+    }
+  },
+  "85": {
+    "inputs": {
+      "id": "video",
+      "label": "Video",
+      "frame_load_cap": [
+        "83",
+        0
+      ],
+      "skip_first_frames": 0,
+      "select_every_nth": 1,
+      "default_url": ""
+    },
+    "class_type": "Playbook Video",
+    "_meta": {
+      "title": "Playbook Video (External)"
+    }
+  },
+  "86": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 353456011154125,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "87": {
+    "inputs": {
+      "model_name": "hotshotxl_mm_v1.pth",
+      "beta_schedule": "linear (HotshotXL/default)",
+      "model": [
+        "3",
+        0
+      ],
+      "context_options": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "ADE_AnimateDiffLoaderGen1",
+    "_meta": {
+      "title": "AnimateDiff Loader 🎭🅐🅓①"
+    }
+  },
+  "88": {
+    "inputs": {
+      "context_length": 8,
+      "context_stride": 1,
+      "context_overlap": 3,
+      "closed_loop": false,
+      "fuse_method": "flat",
+      "use_on_equal_length": false,
+      "start_percent": 0,
+      "guarantee_steps": 1
+    },
+    "class_type": "ADE_LoopedUniformContextOptions",
+    "_meta": {
+      "title": "Context Options◆Looped Uniform 🎭🅐🅓"
+    }
+  },
+  "89": {
+    "inputs": {
+      "ckpt_name": "film_net_fp32.pt",
+      "clear_cache_after_n_frames": 10,
+      "multiplier": 2,
+      "frames": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "FILM VFI",
+    "_meta": {
+      "title": "FILM VFI"
+    }
+  }
+}

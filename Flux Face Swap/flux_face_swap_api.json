@@ -1,0 +1,268 @@
+{
+  "10": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "108": {
+    "inputs": {
+      "enabled": true,
+      "swap_model": "inswapper_128.onnx",
+      "facedetection": "retinaface_resnet50",
+      "face_restore_model": "codeformer-v0.1.0.pth",
+      "face_restore_visibility": 1,
+      "codeformer_weight": 1,
+      "detect_gender_input": "no",
+      "detect_gender_source": "no",
+      "input_faces_index": "0",
+      "source_faces_index": "0",
+      "console_log_level": 1,
+      "input_image": [
+        "175",
+        0
+      ],
+      "source_image": [
+        "165",
+        0
+      ],
+      "face_boost": [
+        "174",
+        0
+      ]
+    },
+    "class_type": "ReActorFaceSwap",
+    "_meta": {
+      "title": "ReActor 🌌 Fast Face Swap"
+    }
+  },
+  "142": {
+    "inputs": {
+      "model_name": "bbox/face_yolov8m.pt"
+    },
+    "class_type": "UltralyticsDetectorProvider",
+    "_meta": {
+      "title": "UltralyticsDetectorProvider"
+    }
+  },
+  "145": {
+    "inputs": {
+      "guide_size": 512,
+      "guide_size_for": true,
+      "max_size": 1024,
+      "seed": [
+        "164",
+        0
+      ],
+      "steps": 20,
+      "cfg": 1,
+      "sampler_name": "euler",
+      "scheduler": "simple",
+      "denoise": 0.1,
+      "feather": 5,
+      "noise_mask": true,
+      "force_inpaint": true,
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3,
+      "sam_detection_hint": "center-1",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "sam_bbox_expansion": 0,
+      "sam_mask_hint_threshold": 0.7,
+      "sam_mask_hint_use_negative": "False",
+      "drop_size": 10,
+      "wildcard": "",
+      "cycle": 1,
+      "inpaint_model": false,
+      "noise_mask_feather": 20,
+      "enabled": true,
+      "image": [
+        "159",
+        0
+      ],
+      "model": [
+        "169",
+        0
+      ],
+      "clip": [
+        "171",
+        0
+      ],
+      "vae": [
+        "10",
+        0
+      ],
+      "positive": [
+        "172",
+        0
+      ],
+      "negative": [
+        "173",
+        0
+      ],
+      "bbox_detector": [
+        "142",
+        0
+      ]
+    },
+    "class_type": "AV_FaceDetailer",
+    "_meta": {
+      "title": "FaceDetailer (AV)"
+    }
+  },
+  "152": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "145",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "159": {
+    "inputs": {
+      "bbox_model_name": "bbox/face_yolov8m.pt",
+      "bbox_threshold": 0.5,
+      "bbox_dilation": 10,
+      "bbox_crop_factor": 3,
+      "bbox_drop_size": 10,
+      "sam_model_name": "sam_vit_b_01ec64.pth",
+      "sam_dilation": 0,
+      "sam_threshold": 0.93,
+      "bbox_expansion": 0,
+      "mask_hint_threshold": 0.7,
+      "mask_hint_use_negative": "False",
+      "morphology_operation": "dilate",
+      "morphology_distance": 0,
+      "blur_radius": 9,
+      "sigma_factor": 1,
+      "image": [
+        "175",
+        0
+      ],
+      "swapped_image": [
+        "108",
+        0
+      ]
+    },
+    "class_type": "ReActorMaskHelper",
+    "_meta": {
+      "title": "ReActor 🌌 Masking Helper"
+    }
+  },
+  "164": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 64565,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "165": {
+    "inputs": {
+      "id": "source_image",
+      "label": "Source Image",
+      "default_url": ""
+    },
+    "class_type": "Playbook Image",
+    "_meta": {
+      "title": "Playbook Image"
+    }
+  },
+  "169": {
+    "inputs": {
+      "unet_name": "flux1-dev-Q4_K_S.gguf"
+    },
+    "class_type": "UnetLoaderGGUF",
+    "_meta": {
+      "title": "Unet Loader (GGUF)"
+    }
+  },
+  "170": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "171",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "171": {
+    "inputs": {
+      "clip_name1": "t5-v1_1-xxl-encoder-Q4_K_S.gguf",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux"
+    },
+    "class_type": "DualCLIPLoaderGGUF",
+    "_meta": {
+      "title": "DualCLIPLoader (GGUF)"
+    }
+  },
+  "172": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "170",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "173": {
+    "inputs": {
+      "text": "",
+      "clip": [
+        "171",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "174": {
+    "inputs": {
+      "enabled": true,
+      "boost_model": "none",
+      "interpolation": "Bicubic",
+      "visibility": 1,
+      "codeformer_weight": 0.5,
+      "restore_with_main_after": false
+    },
+    "class_type": "ReActorFaceBoost",
+    "_meta": {
+      "title": "ReActor 🌌 Face Booster"
+    }
+  },
+  "175": {
+    "inputs": {
+      "id": "target_image",
+      "label": "Target Image",
+      "default_url": ""
+    },
+    "class_type": "Playbook Image",
+    "_meta": {
+      "title": "Playbook Image"
+    }
+  }
+}

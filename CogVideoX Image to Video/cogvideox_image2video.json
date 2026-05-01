@@ -1,0 +1,878 @@
+{
+  "last_node_id": 46,
+  "last_link_id": 62,
+  "nodes": [
+    {
+      "id": 24,
+      "type": "CogVideoDecode",
+      "pos": [
+        7110,
+        1570
+      ],
+      "size": [
+        315,
+        198
+      ],
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 33
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 34
+        }
+      ],
+      "outputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "links": [
+            55
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CogVideoDecode"
+      },
+      "widgets_values": [
+        true,
+        240,
+        360,
+        0.2,
+        0.2,
+        true
+      ]
+    },
+    {
+      "id": 25,
+      "type": "CLIPLoader",
+      "pos": [
+        5755.10107421875,
+        1605.87646484375
+      ],
+      "size": [
+        451.30548095703125,
+        82
+      ],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            39
+          ],
+          "slot_index": 0,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPLoader"
+      },
+      "widgets_values": [
+        "google_t5xxl_fp8_e4m3fn.safetensors",
+        "sd3",
+        "default"
+      ]
+    },
+    {
+      "id": 29,
+      "type": "CogVideoTextEncode",
+      "pos": [
+        6080,
+        1880
+      ],
+      "size": [
+        471.90142822265625,
+        168.08047485351562
+      ],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 39
+        },
+        {
+          "name": "prompt",
+          "type": "STRING",
+          "link": 51,
+          "widget": {
+            "name": "prompt"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            36
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "links": [
+            32
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CogVideoTextEncode"
+      },
+      "widgets_values": [
+        "high quality, camera pans around subject",
+        1,
+        false
+      ]
+    },
+    {
+      "id": 23,
+      "type": "CogVideoTextEncode",
+      "pos": [
+        6080,
+        2100
+      ],
+      "size": [
+        478.5522155761719,
+        195.49041748046875
+      ],
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 32
+        }
+      ],
+      "outputs": [
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "links": [
+            37
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CogVideoTextEncode"
+      },
+      "widgets_values": [
+        "The video is not of a high quality, it has a low resolution. Watermark present in each frame. Strange motion trajectory. nude, nsfw",
+        1,
+        true
+      ]
+    },
+    {
+      "id": 30,
+      "type": "CogVideoImageEncode",
+      "pos": [
+        6414.88916015625,
+        2391.9814453125
+      ],
+      "size": [
+        315,
+        194
+      ],
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 40
+        },
+        {
+          "name": "start_image",
+          "type": "IMAGE",
+          "link": 59
+        },
+        {
+          "name": "end_image",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            38
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CogVideoImageEncode"
+      },
+      "widgets_values": [
+        true,
+        0.05,
+        0.9500000000000001,
+        0,
+        1
+      ]
+    },
+    {
+      "id": 44,
+      "type": "ImageResizeKJ",
+      "pos": [
+        5881.916015625,
+        2384.893310546875
+      ],
+      "size": [
+        357.1738586425781,
+        254.0962371826172
+      ],
+      "flags": {
+        "collapsed": false
+      },
+      "order": 6,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 60
+        },
+        {
+          "name": "get_image_size",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "width_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "width_input"
+          },
+          "shape": 7
+        },
+        {
+          "name": "height_input",
+          "type": "INT",
+          "link": null,
+          "widget": {
+            "name": "height_input"
+          },
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            59
+          ],
+          "slot_index": 0,
+          "shape": 3
+        },
+        {
+          "name": "width",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "height",
+          "type": "INT",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImageResizeKJ"
+      },
+      "widgets_values": [
+        1024,
+        576,
+        "lanczos",
+        false,
+        16,
+        0,
+        0,
+        "center"
+      ]
+    },
+    {
+      "id": 26,
+      "type": "DownloadAndLoadCogVideoModel",
+      "pos": [
+        6252.5732421875,
+        1566.7213134765625
+      ],
+      "size": [
+        315,
+        218
+      ],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "block_edit",
+          "type": "TRANSFORMERBLOCKS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "lora",
+          "type": "COGLORA",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "compile_args",
+          "type": "COMPILEARGS",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "model",
+          "type": "COGVIDEOMODEL",
+          "links": [
+            35
+          ]
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "links": [
+            33,
+            40
+          ],
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadCogVideoModel"
+      },
+      "widgets_values": [
+        "kijai/CogVideoX-5b-1.5-I2V",
+        "bf16",
+        "disabled",
+        false,
+        "sdpa",
+        "main_device"
+      ]
+    },
+    {
+      "id": 32,
+      "type": "VHS_VideoCombine",
+      "pos": [
+        8054.3232421875,
+        1541.9754638671875
+      ],
+      "size": [
+        663.577880859375,
+        710.0125732421875
+      ],
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 56
+        },
+        {
+          "name": "audio",
+          "type": "AUDIO",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "meta_batch",
+          "type": "VHS_BatchManager",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Filenames",
+          "type": "VHS_FILENAMES",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VHS_VideoCombine"
+      },
+      "widgets_values": {
+        "frame_rate": 24,
+        "loop_count": 0,
+        "filename_prefix": "CogVideoX-I2V",
+        "format": "video/h264-mp4",
+        "pix_fmt": "yuv420p",
+        "crf": 19,
+        "save_metadata": true,
+        "trim_to_audio": false,
+        "pingpong": false,
+        "save_output": true,
+        "videopreview": {
+          "hidden": false,
+          "paused": false,
+          "params": {
+            "filename": "CogVideoX-I2V_00015.mp4",
+            "subfolder": "",
+            "type": "output",
+            "format": "video/h264-mp4",
+            "frame_rate": 24
+          },
+          "muted": false
+        }
+      }
+    },
+    {
+      "id": 42,
+      "type": "FILM VFI",
+      "pos": [
+        7516.8076171875,
+        1553.385986328125
+      ],
+      "size": [
+        443.4000244140625,
+        126
+      ],
+      "flags": {},
+      "order": 11,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "frames",
+          "type": "IMAGE",
+          "link": 55
+        },
+        {
+          "name": "optional_interpolation_states",
+          "type": "INTERPOLATION_STATES",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            56
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "FILM VFI"
+      },
+      "widgets_values": [
+        "film_net_fp32.pt",
+        10,
+        2
+      ]
+    },
+    {
+      "id": 36,
+      "type": "Playbook Text",
+      "pos": [
+        5084.44873046875,
+        1452.6534423828125
+      ],
+      "size": [
+        400,
+        200
+      ],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            51
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "trigger_words",
+          "type": "STRING",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Playbook Text"
+      },
+      "widgets_values": [
+        "motion_prompt",
+        "Motion Prompt",
+        "",
+        ""
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 39,
+      "type": "Playbook Image",
+      "pos": [
+        5059.39013671875,
+        1826.5772705078125
+      ],
+      "size": [
+        315,
+        106
+      ],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "default_value",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Image",
+          "type": "IMAGE",
+          "links": [
+            60
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Playbook Image"
+      },
+      "widgets_values": [
+        "image",
+        "Image",
+        ""
+      ]
+    },
+    {
+      "id": 27,
+      "type": "CogVideoSampler",
+      "pos": [
+        6720,
+        1580
+      ],
+      "size": [
+        330,
+        574
+      ],
+      "flags": {},
+      "order": 9,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "COGVIDEOMODEL",
+          "link": 35
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 36
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 37
+        },
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "image_cond_latents",
+          "type": "LATENT",
+          "link": 38,
+          "shape": 7
+        },
+        {
+          "name": "context_options",
+          "type": "COGCONTEXT",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "controlnet",
+          "type": "COGVIDECONTROLNET",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "tora_trajectory",
+          "type": "TORAFEATURES",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "fastercache",
+          "type": "FASTERCACHEARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "feta_args",
+          "type": "FETAARGS",
+          "link": null,
+          "shape": 7
+        },
+        {
+          "name": "seed",
+          "type": "INT",
+          "link": 62,
+          "widget": {
+            "name": "seed"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "links": [
+            34
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CogVideoSampler"
+      },
+      "widgets_values": [
+        49,
+        25,
+        6,
+        2342343,
+        "fixed",
+        "CogVideoXDPMScheduler",
+        1
+      ]
+    },
+    {
+      "id": 46,
+      "type": "Playbook Seed",
+      "pos": [
+        5042.59375,
+        2027.5712890625
+      ],
+      "size": [
+        315,
+        130
+      ],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "seed",
+          "type": "INT",
+          "links": [
+            62
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Playbook Seed"
+      },
+      "widgets_values": [
+        "seed",
+        "Seed",
+        4836738467,
+        "Fixed"
+      ]
+    }
+  ],
+  "links": [
+    [
+      32,
+      29,
+      1,
+      23,
+      0,
+      "CLIP"
+    ],
+    [
+      33,
+      26,
+      1,
+      24,
+      0,
+      "VAE"
+    ],
+    [
+      34,
+      27,
+      0,
+      24,
+      1,
+      "LATENT"
+    ],
+    [
+      35,
+      26,
+      0,
+      27,
+      0,
+      "COGVIDEOMODEL"
+    ],
+    [
+      36,
+      29,
+      0,
+      27,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      37,
+      23,
+      0,
+      27,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      38,
+      30,
+      0,
+      27,
+      4,
+      "LATENT"
+    ],
+    [
+      39,
+      25,
+      0,
+      29,
+      0,
+      "CLIP"
+    ],
+    [
+      40,
+      26,
+      1,
+      30,
+      0,
+      "VAE"
+    ],
+    [
+      51,
+      36,
+      0,
+      29,
+      1,
+      "STRING"
+    ],
+    [
+      55,
+      24,
+      0,
+      42,
+      0,
+      "IMAGE"
+    ],
+    [
+      56,
+      42,
+      0,
+      32,
+      0,
+      "IMAGE"
+    ],
+    [
+      59,
+      44,
+      0,
+      30,
+      1,
+      "IMAGE"
+    ],
+    [
+      60,
+      39,
+      0,
+      44,
+      0,
+      "IMAGE"
+    ],
+    [
+      62,
+      46,
+      0,
+      27,
+      10,
+      "INT"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7247295000000012,
+      "offset": [
+        -4712.116398690881,
+        -1417.1046343681187
+      ]
+    },
+    "node_versions": {
+      "comfyui-cogvideoxwrapper": "5bca0548d924b5114a17061bf0056d7c58ad1aea",
+      "comfy-core": "0.3.10",
+      "ComfyUI-KJNodes": "5b8d419c6f9c2ab6559a5758f7f504cb8b3a8412",
+      "ComfyUI-VideoHelperSuite": "c47b10ca1798b4925ff5a5f07d80c51ca80a837d",
+      "ComfyUI-Frame-Interpolation": "c336f7184cb1ac1243381e725fea1ad2c0a10c09",
+      "playbook3d-comfyui-nodes": "2d7587cf0b25380ed385e0ca84fce82163a8b779"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0
+  },
+  "version": 0.4
+}

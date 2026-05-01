@@ -1,0 +1,473 @@
+{
+  "5": {
+    "inputs": {
+      "stop_at_clip_layer": [
+        "48",
+        0
+      ],
+      "clip": [
+        "50",
+        1
+      ]
+    },
+    "class_type": "CLIPSetLastLayer",
+    "_meta": {
+      "title": "CLIP Set Last Layer"
+    }
+  },
+  "6": {
+    "inputs": {
+      "text": [
+        "48",
+        1
+      ],
+      "clip": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "7": {
+    "inputs": {
+      "text": [
+        "48",
+        3
+      ],
+      "clip": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "8": {
+    "inputs": {
+      "conditioning_to": [
+        "6",
+        0
+      ],
+      "conditioning_from": [
+        "7",
+        0
+      ]
+    },
+    "class_type": "ConditioningConcat",
+    "_meta": {
+      "title": "Conditioning (Concat)"
+    }
+  },
+  "9": {
+    "inputs": {
+      "text": [
+        "48",
+        2
+      ],
+      "clip": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Prompt)"
+    }
+  },
+  "13": {
+    "inputs": {
+      "sampler": [
+        "48",
+        7
+      ],
+      "scheduler": [
+        "48",
+        8
+      ]
+    },
+    "class_type": "Reroute Sampler JK",
+    "_meta": {
+      "title": "Reroute Sampler JK🐉"
+    }
+  },
+  "15": {
+    "inputs": {
+      "number": [
+        "46",
+        0
+      ]
+    },
+    "class_type": "Number to Seed",
+    "_meta": {
+      "title": "Number to Seed"
+    }
+  },
+  "17": {
+    "inputs": {
+      "amount": [
+        "58",
+        0
+      ],
+      "image": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "RepeatImageBatch",
+    "_meta": {
+      "title": "RepeatImageBatch"
+    }
+  },
+  "18": {
+    "inputs": {
+      "seed": [
+        "48",
+        4
+      ],
+      "steps": [
+        "48",
+        5
+      ],
+      "cfg": [
+        "48",
+        6
+      ],
+      "sampler_name": [
+        "13",
+        0
+      ],
+      "scheduler": [
+        "13",
+        1
+      ],
+      "denoise": [
+        "48",
+        9
+      ],
+      "model": [
+        "37",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "43",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "26": {
+    "inputs": {
+      "seed": [
+        "48",
+        4
+      ],
+      "steps": [
+        "48",
+        5
+      ],
+      "cfg": [
+        "48",
+        6
+      ],
+      "sampler_name": [
+        "13",
+        0
+      ],
+      "scheduler": [
+        "13",
+        1
+      ],
+      "denoise": [
+        "48",
+        9
+      ],
+      "model": [
+        "27",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "43",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "27": {
+    "inputs": {
+      "tiling": "x_only",
+      "copy_model": "Make a copy",
+      "model": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "SeamlessTile",
+    "_meta": {
+      "title": "Seamless Tile"
+    }
+  },
+  "33": {
+    "inputs": {
+      "seed": [
+        "48",
+        4
+      ],
+      "steps": [
+        "48",
+        5
+      ],
+      "cfg": [
+        "48",
+        6
+      ],
+      "sampler_name": [
+        "13",
+        0
+      ],
+      "scheduler": [
+        "13",
+        1
+      ],
+      "denoise": [
+        "48",
+        9
+      ],
+      "model": [
+        "39",
+        0
+      ],
+      "positive": [
+        "8",
+        0
+      ],
+      "negative": [
+        "9",
+        0
+      ],
+      "latent_image": [
+        "43",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "37": {
+    "inputs": {
+      "tiling": "enable",
+      "copy_model": "Make a copy",
+      "model": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "SeamlessTile",
+    "_meta": {
+      "title": "Seamless Tile"
+    }
+  },
+  "39": {
+    "inputs": {
+      "tiling": "y_only",
+      "copy_model": "Make a copy",
+      "model": [
+        "50",
+        0
+      ]
+    },
+    "class_type": "SeamlessTile",
+    "_meta": {
+      "title": "Seamless Tile"
+    }
+  },
+  "42": {
+    "inputs": {
+      "tiling": "enable",
+      "samples": [
+        "18",
+        0
+      ],
+      "vae": [
+        "52",
+        0
+      ]
+    },
+    "class_type": "CircularVAEDecode",
+    "_meta": {
+      "title": "Circular VAE Decode (tile)"
+    }
+  },
+  "43": {
+    "inputs": {
+      "width": [
+        "48",
+        10
+      ],
+      "height": [
+        "48",
+        11
+      ],
+      "batch_size": [
+        "48",
+        12
+      ]
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "46": {
+    "inputs": {
+      "a": [
+        "48",
+        4
+      ]
+    },
+    "class_type": "CM_IntToNumber JK",
+    "_meta": {
+      "title": "IntToNumber JK🐉"
+    }
+  },
+  "48": {
+    "inputs": {
+      "seed": [
+        "57",
+        0
+      ],
+      "stop_at_clip_layer": -2,
+      "positive": [
+        "56",
+        0
+      ],
+      "negative": "shadow,highlight,reflection,shiny",
+      "variation": "",
+      "steps": 20,
+      "cfg": 7,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "karras",
+      "denoise": 1,
+      "resolution": "SDXL 1024x1024",
+      "custom_width": 1024,
+      "custom_height": 1024,
+      "swap_dimensions": false,
+      "batch_size": 1
+    },
+    "class_type": "Ksampler Parameters JK",
+    "_meta": {
+      "title": "Ksampler Parameters JK🐉"
+    }
+  },
+  "50": {
+    "inputs": {
+      "ckpt_name": "juggernautXL_juggXIByRundiffusion.safetensors"
+    },
+    "class_type": "CheckpointLoaderSimple",
+    "_meta": {
+      "title": "Load Checkpoint"
+    }
+  },
+  "52": {
+    "inputs": {
+      "vae_name": "sdxl.vae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "56": {
+    "inputs": {
+      "id": "prompt",
+      "label": "Prompt",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "57": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 67677,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "58": {
+    "inputs": {
+      "id": "tiles",
+      "label": "Tiles",
+      "min": 0,
+      "max": 100,
+      "default_value": 16
+    },
+    "class_type": "Playbook Number",
+    "_meta": {
+      "title": "Playbook Number (External)"
+    }
+  },
+  "59": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "60",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  },
+  "60": {
+    "inputs": {
+      "num_columns": 4,
+      "match_image_size": false,
+      "max_resolution": 4096,
+      "images": [
+        "17",
+        0
+      ]
+    },
+    "class_type": "ImageConcatFromBatch",
+    "_meta": {
+      "title": "Image Concatenate From Batch"
+    }
+  }
+}

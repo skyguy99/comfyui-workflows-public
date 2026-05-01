@@ -1,0 +1,31 @@
+{
+  "27": {
+    "inputs": {
+      "filename_prefix": "video/ComfyUI",
+      "format": "auto",
+      "codec": "auto",
+      "video": [
+        "30",
+        0
+      ]
+    },
+    "class_type": "SaveVideo",
+    "_meta": {
+      "title": "Save Video"
+    }
+  },
+  "30": {
+    "inputs": {
+      "prompt": "",
+      "negative_prompt": "gopro, bright, contrast, static, overexposed, bright, vignette, artifacts, still, noise, texture, scanlines, videogame, 360 camera, VR, transition, flare, saturation, distorted, warped, wide angle, contrast, saturated, vibrant, glowing, cross dissolve, texture, videogame, saturation, cheesy, ugly hands, mutated hands, mutant, disfigured, extra fingers, blown out, horrible, blurry, worst quality, bad, transition, dissolve, cross-dissolve, melt, fade in, fade out, wobbly, weird, low quality, plastic, stock footage, video camera, boring, static",
+      "resolution": "16:9 (1920 x 1080)",
+      "prompt_adherence": 7,
+      "seed": 288135626,
+      "steps": 100
+    },
+    "class_type": "MoonvalleyTxt2VideoNode",
+    "_meta": {
+      "title": "Moonvalley Marey Text to Video"
+    }
+  }
+}

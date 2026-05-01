@@ -1,0 +1,297 @@
+{
+  "last_node_id": 23,
+  "last_link_id": 29,
+  "nodes": [
+    {
+      "id": 23,
+      "type": "SaveImage",
+      "pos": {
+        "0": 1220.9014892578125,
+        "1": 254.2533721923828
+      },
+      "size": {
+        "0": 270,
+        "1": 58
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 29
+        }
+      ],
+      "outputs": [],
+      "properties": {
+        "Node name for S&R": "SaveImage"
+      },
+      "widgets_values": [
+        "ComfyUI"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "iToolsAddOverlay",
+      "pos": {
+        "0": 999.693359375,
+        "1": 582.93115234375
+      },
+      "size": {
+        "0": 240,
+        "1": 130
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 27
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 28,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": [
+            29
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "iToolsAddOverlay"
+      },
+      "widgets_values": [
+        "img info:",
+        "#000000AA",
+        20,
+        true
+      ]
+    },
+    {
+      "id": 17,
+      "type": "DownloadAndLoadFlorence2Model",
+      "pos": {
+        "0": 14.835262298583984,
+        "1": 205.9051513671875
+      },
+      "size": {
+        "0": 318.6021423339844,
+        "1": 130
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "lora",
+          "type": "PEFTLORA",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "links": [
+            25
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DownloadAndLoadFlorence2Model"
+      },
+      "widgets_values": [
+        "microsoft/Florence-2-base",
+        "fp16",
+        "sdpa",
+        false
+      ]
+    },
+    {
+      "id": 16,
+      "type": "Florence2Run",
+      "pos": {
+        "0": 449,
+        "1": 216
+      },
+      "size": {
+        "0": 400,
+        "1": 364
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 26
+        },
+        {
+          "name": "florence2_model",
+          "type": "FL2MODEL",
+          "link": 25
+        }
+      ],
+      "outputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "links": null
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "links": null
+        },
+        {
+          "name": "caption",
+          "type": "STRING",
+          "links": [
+            28
+          ]
+        },
+        {
+          "name": "data",
+          "type": "JSON",
+          "links": null
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Florence2Run"
+      },
+      "widgets_values": [
+        "",
+        "detailed_caption",
+        true,
+        false,
+        1024,
+        3,
+        true,
+        "",
+        605113041267961,
+        "randomize"
+      ]
+    },
+    {
+      "id": 22,
+      "type": "Playbook Image",
+      "pos": {
+        "0": 103,
+        "1": 465
+      },
+      "size": {
+        "0": 270,
+        "1": 106
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "default_value",
+          "type": "IMAGE",
+          "link": null,
+          "shape": 7
+        }
+      ],
+      "outputs": [
+        {
+          "name": "Image",
+          "type": "IMAGE",
+          "links": [
+            26,
+            27
+          ]
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Playbook Image"
+      },
+      "widgets_values": [
+        "Node ID",
+        "Node Label",
+        ".png"
+      ]
+    }
+  ],
+  "links": [
+    [
+      25,
+      17,
+      0,
+      16,
+      1,
+      "FL2MODEL"
+    ],
+    [
+      26,
+      22,
+      0,
+      16,
+      0,
+      "IMAGE"
+    ],
+    [
+      27,
+      22,
+      0,
+      20,
+      0,
+      "IMAGE"
+    ],
+    [
+      28,
+      16,
+      2,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      29,
+      20,
+      0,
+      23,
+      0,
+      "IMAGE"
+    ]
+  ],
+  "groups": [],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.7972024500000012,
+      "offset": [
+        328.8167131811311,
+        47.26418751126798
+      ]
+    },
+    "node_versions": {
+      "playbook3d-comfyui-nodes": "00a9087d33180b275f31a996b9b7b21641a4ec7c",
+      "ComfyUI-Florence2": "dffd12506d50f0540b8a7f4b36a05d4fb5fed2de",
+      "comfy-core": "0.3.34",
+      "ComfyUI-iTools": "c34ae1a0822d863c6aad7f4a4add8e77f0b69c77"
+    },
+    "ue_links": [],
+    "VHS_latentpreview": false,
+    "VHS_latentpreviewrate": 0,
+    "frontendVersion": "1.19.9",
+    "VHS_MetadataImage": true,
+    "VHS_KeepIntermediate": true
+  },
+  "version": 0.4
+}

@@ -1,0 +1,679 @@
+{
+  "11": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "42": {
+    "inputs": {
+      "text": "text, watermark, uniform, patterns, underexposed, ugly, high contrast, jpeg, (worst quality, low quality, lowres, low details, overexposed, underexposed, grayscale, bw,  bad art:1.4), (font, username, error, logo, words, letters, digits, autograph, trademark, name:1.2), (blur, blurry, grainy), poorly lit, bad shadow, draft, cropped, out of frame, cut off, censored, jpeg artifacts, out of focus, glitch, duplicate, (amateur:1.3), JuggernautNegative, low quality, blurry, malformed, distorted, black and white, hand, text, water mark, nude, nsfw",
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Negative Prompt)"
+    }
+  },
+  "61": {
+    "inputs": {
+      "id": "scene_prompt",
+      "label": "Scene Prompt",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Playbook Text (External)"
+    }
+  },
+  "65": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 2,
+      "crop": 0,
+      "image": [
+        "180",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image (deprecated)"
+    }
+  },
+  "85": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "97",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "86": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "98",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "87": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "99",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "88": {
+    "inputs": {
+      "kernel_size": 5,
+      "sigma": 5,
+      "mask": [
+        "100",
+        1
+      ]
+    },
+    "class_type": "ImpactGaussianBlurMask",
+    "_meta": {
+      "title": "Gaussian Blur Mask"
+    }
+  },
+  "89": {
+    "inputs": {
+      "separator": ",",
+      "text1": [
+        "61",
+        0
+      ],
+      "text2": [
+        "117",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "90": {
+    "inputs": {
+      "separator": ",",
+      "text1": [
+        "61",
+        0
+      ],
+      "text2": [
+        "118",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "91": {
+    "inputs": {
+      "separator": ",",
+      "text1": [
+        "61",
+        0
+      ],
+      "text2": [
+        "116",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "92": {
+    "inputs": {
+      "separator": ",",
+      "text1": [
+        "61",
+        0
+      ],
+      "text2": [
+        "119",
+        0
+      ]
+    },
+    "class_type": "CR Text Concatenate",
+    "_meta": {
+      "title": "🔤 CR Text Concatenate"
+    }
+  },
+  "93": {
+    "inputs": {
+      "text": [
+        "90",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 2 Prompt"
+    }
+  },
+  "94": {
+    "inputs": {
+      "text": [
+        "91",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 3 Prompt"
+    }
+  },
+  "97": {
+    "inputs": {
+      "mask_color": "#ffe905",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "11",
+        0
+      ],
+      "color_mask": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "98": {
+    "inputs": {
+      "mask_color": "#0489d6",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "11",
+        0
+      ],
+      "color_mask": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "99": {
+    "inputs": {
+      "mask_color": "#a2d4d5",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "11",
+        0
+      ],
+      "color_mask": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "100": {
+    "inputs": {
+      "mask_color": "#000000",
+      "strength": 1,
+      "set_cond_area": "default",
+      "prompt": "LEAVE EMPTY",
+      "dilation": 0,
+      "clip": [
+        "11",
+        0
+      ],
+      "color_mask": [
+        "113",
+        0
+      ]
+    },
+    "class_type": "RegionalConditioningColorMask //Inspire",
+    "_meta": {
+      "title": "Regional Conditioning By Color Mask (Inspire)"
+    }
+  },
+  "105": {
+    "inputs": {
+      "text": [
+        "92",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 4 Prompt"
+    }
+  },
+  "106": {
+    "inputs": {
+      "text": [
+        "89",
+        0
+      ],
+      "clip": [
+        "11",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "Mask 1 Prompt"
+    }
+  },
+  "110": {
+    "inputs": {
+      "mask_1_strength": 1,
+      "mask_2_strength": 1,
+      "mask_3_strength": 1,
+      "mask_4_strength": 1,
+      "set_cond_area": "default",
+      "positive_1": [
+        "106",
+        0
+      ],
+      "negative_1": [
+        "42",
+        0
+      ],
+      "positive_2": [
+        "93",
+        0
+      ],
+      "negative_2": [
+        "42",
+        0
+      ],
+      "positive_3": [
+        "94",
+        0
+      ],
+      "negative_3": [
+        "42",
+        0
+      ],
+      "positive_4": [
+        "105",
+        0
+      ],
+      "negative_4": [
+        "42",
+        0
+      ],
+      "mask_1": [
+        "85",
+        0
+      ],
+      "mask_2": [
+        "86",
+        0
+      ],
+      "mask_3": [
+        "87",
+        0
+      ],
+      "mask_4": [
+        "88",
+        0
+      ]
+    },
+    "class_type": "ConditioningSetMaskAndCombine4",
+    "_meta": {
+      "title": "ConditioningSetMaskAndCombine4"
+    }
+  },
+  "113": {
+    "inputs": {
+      "width": 1024,
+      "height": 1024,
+      "upscale_method": "nearest-exact",
+      "keep_proportion": true,
+      "divisible_by": 2,
+      "crop": 0,
+      "image": [
+        "184",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJ",
+    "_meta": {
+      "title": "Resize Image (deprecated)"
+    }
+  },
+  "116": {
+    "inputs": {
+      "id": "mask_3",
+      "label": "Mask Prompt 3",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Mask 3 Prompt"
+    }
+  },
+  "117": {
+    "inputs": {
+      "id": "mask_1",
+      "label": "Mask Prompt 1",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Mask 1 Prompt"
+    }
+  },
+  "118": {
+    "inputs": {
+      "id": "mask_2",
+      "label": "Mask Prompt 2",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Mask 2 Prompt"
+    }
+  },
+  "119": {
+    "inputs": {
+      "id": "mask_4",
+      "label": "Mask Prompt 4",
+      "default_value": "",
+      "trigger_words": ""
+    },
+    "class_type": "Playbook Text",
+    "_meta": {
+      "title": "Mask 4 Prompt"
+    }
+  },
+  "154": {
+    "inputs": {
+      "clip_name1": "t5xxl_fp8_e4m3fn.safetensors",
+      "clip_name2": "clip_l.safetensors",
+      "type": "flux",
+      "device": "default"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "155": {
+    "inputs": {
+      "unet_name": "flux1-dev-fp8.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "156": {
+    "inputs": {
+      "vae_name": "ae.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "158": {
+    "inputs": {
+      "seed": [
+        "177",
+        0
+      ],
+      "steps": 25,
+      "cfg": 1,
+      "sampler_name": "dpmpp_2m",
+      "scheduler": "beta",
+      "denoise": 1,
+      "model": [
+        "155",
+        0
+      ],
+      "positive": [
+        "171",
+        0
+      ],
+      "negative": [
+        "171",
+        1
+      ],
+      "latent_image": [
+        "160",
+        0
+      ]
+    },
+    "class_type": "KSampler",
+    "_meta": {
+      "title": "KSampler"
+    }
+  },
+  "160": {
+    "inputs": {
+      "width": [
+        "65",
+        1
+      ],
+      "height": [
+        "65",
+        2
+      ],
+      "batch_size": 1
+    },
+    "class_type": "EmptyLatentImage",
+    "_meta": {
+      "title": "Empty Latent Image"
+    }
+  },
+  "164": {
+    "inputs": {
+      "samples": [
+        "158",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "VAEDecode",
+    "_meta": {
+      "title": "VAE Decode"
+    }
+  },
+  "167": {
+    "inputs": {
+      "control_net_name": "UnionFlux.safetensors"
+    },
+    "class_type": "ControlNetLoader",
+    "_meta": {
+      "title": "Load ControlNet Model"
+    }
+  },
+  "169": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "110",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "170": {
+    "inputs": {
+      "guidance": 3.5,
+      "conditioning": [
+        "42",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "171": {
+    "inputs": {
+      "strength": 0.9000000000000001,
+      "start_percent": 0,
+      "end_percent": 1,
+      "positive": [
+        "169",
+        0
+      ],
+      "negative": [
+        "170",
+        0
+      ],
+      "control_net": [
+        "167",
+        0
+      ],
+      "image": [
+        "65",
+        0
+      ],
+      "vae": [
+        "156",
+        0
+      ]
+    },
+    "class_type": "ControlNetApplyAdvanced",
+    "_meta": {
+      "title": "Apply ControlNet"
+    }
+  },
+  "177": {
+    "inputs": {
+      "id": "seed",
+      "label": "Seed",
+      "default_value": 5345435,
+      "setting": "Fixed"
+    },
+    "class_type": "Playbook Seed",
+    "_meta": {
+      "title": "Playbook Seed"
+    }
+  },
+  "180": {
+    "inputs": {
+      "ckpt_name": "depth_anything_v2_vitl.pth",
+      "resolution": 512,
+      "image": [
+        "183",
+        0
+      ]
+    },
+    "class_type": "DepthAnythingV2Preprocessor",
+    "_meta": {
+      "title": "Depth Anything V2 - Relative"
+    }
+  },
+  "183": {
+    "inputs": {
+      "api_key": "",
+      "run_id": ""
+    },
+    "class_type": "Playbook Beauty",
+    "_meta": {
+      "title": "Playbook Beauty Render Pass"
+    }
+  },
+  "184": {
+    "inputs": {
+      "api_key": "",
+      "blur_size": 0,
+      "run_id": ""
+    },
+    "class_type": "Playbook Mask",
+    "_meta": {
+      "title": "Playbook Mask Render Pass"
+    }
+  },
+  "185": {
+    "inputs": {
+      "filename_prefix": "ComfyUI",
+      "images": [
+        "164",
+        0
+      ]
+    },
+    "class_type": "SaveImage",
+    "_meta": {
+      "title": "Save Image"
+    }
+  }
+}

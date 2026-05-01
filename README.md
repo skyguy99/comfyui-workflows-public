@@ -1,6 +1,6 @@
 # ComfyUI Workflows
 
-This repository stores ComfyUI workflow definitions (exported graphs / JSON), maintained by [Skylar](https://github.com/skyguy99); contents are not versioned as a single product, and provenance and maturity vary by file.
+This repository stores ComfyUI workflows, maintained by [Skylar](https://github.com/skyguy99); contents are not versioned as a single product, and provenance and maturity vary by file.
 
 **Sources**
 
