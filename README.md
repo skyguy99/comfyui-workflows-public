@@ -1,13 +1,23 @@
 # ComfyUI Workflows
 
-This repository stores ComfyUI workflows, maintained by [Skylar](https://github.com/skyguy99); contents are not versioned as a single product, and provenance and maturity vary by file.
+An ongoing portfolio of [ComfyUI](https://github.com/comfyanonymous/ComfyUI) workflows for media generation — image, video, character consistency, 3D-to-image, editing, and related pipelines. 
 
-**Sources**
+**Maintained by [Skylar Thomas](https://www.linkedin.com/in/skythomas)** · [GitHub](https://github.com/skyguy99)
 
-- **Local development** — Workflows under active change; expect breaking edits and incomplete node wiring.
-- **Legacy Playbook** — Derived from or aligned with historical templates from [playbook3d](https://github.com/playbook3d); naming and node sets may reflect older ComfyUI / custom-node ecosystems.
-- **Third-party** — Assembled or adapted from public write-ups, [r/comfyui](https://www.reddit.com/r/comfyui/) threads, social posts (e.g. X/Twitter), and similar sources. Attribution is inconsistent unless noted alongside a workflow.
+### See them in action
 
-**Usage**
+Demos and write-ups of selected workflows live on **[linkedin.com/in/skythomas](https://www.linkedin.com/in/skythomas)**
 
-No guarantee of compatibility with your ComfyUI build, manager profile, or installed custom nodes. Validate graphs in your environment before relying on them in production pipelines.
+---
+
+## About this repo
+
+This is a living collection, not a single versioned product. I don’t claim sole authorship of every graph -- many sit somewhere between “from scratch” and “heavily adapted.” Where a clear upstream source is known, it may be noted near the workflow; otherwise treat provenance as mixed.
+
+**Historical / community sources (non-exhaustive):** templates aligned with [playbook3d](https://www.playbook3d.com/), public write-ups, [r/comfyui](https://www.reddit.com/r/comfyui/), and similar posts elsewhere.
+
+---
+
+## Usage
+
+No guarantee of compatibility with your ComfyUI build, custom nodes, or manager profile. Open a workflow in your own environment and resolve missing nodes before using it in production.
